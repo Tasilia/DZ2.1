@@ -23,8 +23,8 @@ public class AppOrderTest {
         $("[type='text']").setValue("Юрий Иванов");
         $("[type='tel']").setValue("+777777777777");
         $("[type='button']").click();
-        $("[data-test-id='phone']").shouldHave(text("Телефон указан неверно. Должно быть 11 цифр," +
-                " например, +79012345678."));
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(text("Телефон указан неверно." +
+                " Должно быть 11 цифр, например, +79012345678."));
     }
 
     @Test
@@ -33,8 +33,8 @@ public class AppOrderTest {
         $("[type='text']").setValue("Юрий Иванов");
         $("[type='tel']").setValue("+77777");
         $("[type='button']").click();
-        $("[data-test-id='phone']").shouldHave(text("Телефон указан неверно. Должно быть 11 цифр," +
-                " например, +79012345678."));
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(text("Телефон указан неверно." +
+                " Должно быть 11 цифр, например, +79012345678."));
     }
 
     @Test
@@ -43,8 +43,8 @@ public class AppOrderTest {
         $("[type='text']").setValue("Юрий Иванов");
         $("[type='tel']").setValue("77777777777");
         $("[type='button']").click();
-        $("[data-test-id='phone']").shouldHave(text("Телефон указан неверно. Должно быть 11 цифр," +
-                " например, +79012345678."));
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(text("Телефон указан неверно." +
+                " Должно быть 11 цифр, например, +79012345678."));
     }
 
     @Test
@@ -53,8 +53,8 @@ public class AppOrderTest {
         $("[type='text']").setValue("Юрий Иванов");
         $("[type='tel']").setValue("7+7777777777");
         $("[type='button']").click();
-        $("[data-test-id='phone']").shouldHave(text("Телефон указан неверно. Должно быть 11 цифр," +
-                " например, +79012345678."));
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(text("Телефон указан неверно." +
+                " Должно быть 11 цифр, например, +79012345678."));
     }
 
     @Test
@@ -63,8 +63,8 @@ public class AppOrderTest {
         $("[type='text']").setValue("Юрий Иванов");
         $("[type='tel']").setValue("Юрий Иванов");
         $("[type='button']").click();
-        $("[data-test-id='phone']").shouldHave(text("Телефон указан неверно. Должно быть 11 цифр," +
-                " например, +79012345678."));
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(text("Телефон указан неверно." +
+                " Должно быть 11 цифр, например, +79012345678."));
     }
 
     @Test
@@ -73,8 +73,8 @@ public class AppOrderTest {
         $("[type='text']").setValue("Юрий Иванов");
         $("[type='tel']").setValue("+7 (777) 777-77-77");
         $("[type='button']").click();
-        $("[data-test-id='phone']").shouldHave(text("Телефон указан неверно. Должно быть 11 цифр," +
-                " например, +79012345678."));
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(text("Телефон указан неверно." +
+                " Должно быть 11 цифр, например, +79012345678."));
     }
 
     @Test
@@ -82,7 +82,8 @@ public class AppOrderTest {
         open("http://localhost:9999");
         $("[type='text']").setValue("Юрий Иванов");
         $("[type='button']").click();
-        $("[data-test-id='phone']").shouldHave(text("Поле обязательно для заполнения"));
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(text("Поле обязательно для" +
+                " заполнения"));
     }
 
     @Test
@@ -90,8 +91,8 @@ public class AppOrderTest {
         open("http://localhost:9999");
         $("[type='text']").setValue("Юрий7");
         $("[type='button']").click();
-        $("[data-test-id='name']").shouldHave(text("Имя и Фамилия указаные неверно. Допустимы только" +
-                " русские буквы, пробелы и дефисы."));
+        $("[data-test-id='name'].input_invalid .input__sub").shouldHave(text("Имя и Фамилия указаные" +
+                " неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
     @Test
@@ -99,8 +100,8 @@ public class AppOrderTest {
         open("http://localhost:9999");
         $("[type='text']").setValue("Petya");
         $("[type='button']").click();
-        $("[data-test-id='name']").shouldHave(text("Имя и Фамилия указаные неверно. Допустимы только" +
-                " русские буквы, пробелы и дефисы."));
+        $("[data-test-id='name'].input_invalid .input__sub").shouldHave(text("Имя и Фамилия указаные" +
+                " неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
     @Test
@@ -108,24 +109,26 @@ public class AppOrderTest {
         open("http://localhost:9999");
         $("[type='text']").setValue("Юрий'");
         $("[type='button']").click();
-        $("[data-test-id='name']").shouldHave(text("Имя и Фамилия указаные неверно. Допустимы только" +
-                " русские буквы, пробелы и дефисы."));
+        $("[data-test-id='name'].input_invalid .input__sub").shouldHave(text("Имя и Фамилия указаные" +
+                " неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
     @Test
     void nameValidation() {
         open("http://localhost:9999");
         $("[type='button']").click();
-        $("[data-test-id='name']").shouldHave(text("Поле обязательно для заполнения"));
+        $("[data-test-id='name'].input_invalid .input__sub").shouldHave(text("Поле обязательно для" +
+                " заполнения"));
     }
 
     @Test
-    void test() {
+    void testInvalidCheckbox() {
         open("http://localhost:9999");
         $("[type='text']").setValue("Юрий-Иван Иванов");
         $("[type='tel']").setValue("+77777777777");
         $("[type='button']").click();
-        $(".input_invalid").shouldHave(text("Я соглашаюсь с условиями обработки и" +
-                " использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй"));
+        $("[data-test-id='agreement'].input_invalid .checkbox__text").shouldHave(text("Я соглашаюсь с" +
+                " условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро" +
+                " кредитных историй"));
     }
 }
